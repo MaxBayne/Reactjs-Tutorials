@@ -20,6 +20,9 @@ import UseStateHookWithFormsComponent from './components/UseStateHookWithFormsCo
 import UseStateHookWithArraysComponent from './components/UseStateHookWithArraysComponent.jsx'
 import RequestLoanFormComponent from './components/RequestLoanFormComponent.jsx'
 import UseContextHookComponent from './components/UseContextHookComponent.jsx'
+import ProductDetailComponent from './components/ProductDetailComponent.jsx'
+
+
 
 
 
@@ -47,6 +50,7 @@ export default function App()
               <Route path='/css' element={<CssComponent/>}/>
               <Route path='/javascript' element={<JavaScriptComponent/>}/>
               <Route path='/products' element={<ProductsListComponent/>}/>
+              <Route path='/product/:id' element={<ProductDetailComponent/>}/>
               <Route path='/useState' element={<UseStateHookComponent/>}/>
               <Route path='/useStateWithArrays' element={<UseStateHookWithArraysComponent/>}/>
               <Route path='/useStateWithForms' element={<UseStateHookWithFormsComponent/>}/>
@@ -54,52 +58,6 @@ export default function App()
               <Route path='/useContext' element={<UseContextHookComponent/>}/>
 
             </Routes>
-
-            {/* <h4>JavaScript Code</h4>
-            <JavaScriptComponent />
-
-            <hr/>
-
-            <h4>Css Style</h4>
-            <CssComponent />
-
-            <hr/>
-
-
-            <h4><u>Map with Collection</u></h4>
-            <ProductsListComponent />
-
-            <hr/>
-
-            <h4>State Management (useState Hooks)</h4>
-            <UseStateHookComponent />
-            
-            <hr/>
-
-            <h4>State Management (useState Hooks With Forms)</h4>
-            <UseStateHookWithFormsComponent/>
-
-            <hr/>
-            
-            <h4>State Management (useState Hooks With Arrays)</h4>
-            <UseStateHookWithArraysComponent/>
-
-            <hr/>
-
-            
-            <RequestLoanFormComponent/>
-            
-
-            <hr/>
-
-            <h4>Context Management (useContext)</h4>
-            <UseContextHookComponent/>
- */}
-
-
-
-
-
 
           </div>
 
