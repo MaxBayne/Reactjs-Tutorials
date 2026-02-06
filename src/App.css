@@ -1,42 +1,50 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.App 
+{
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  position: relative;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App-content
+{
+   height: calc(100vh - 60px);
+  margin-right: 260px; /* same width as sidebar */
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #f5f7fa;
+  
+
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App-SideMenu
+{
+  height: calc(100vh - 60px);
+  position: fixed;
+  top: 90px; /* below header */
+  right: 0;
+  width: 200px;
+  background-color: #282c34;
+  color: #fff;
+  padding: 16px;
+  overflow-y: auto;
+  
+  
+
+}
+/* Side menu links */
+.App-SideMenu a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.App-SideMenu a:hover {
+  background-color: #1f2933;
+  color: #fff;
 }
