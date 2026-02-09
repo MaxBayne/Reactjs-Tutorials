@@ -6,9 +6,9 @@ import { Routes,Route,Link } from 'react-router-dom'
 
 //Import Styles
 import './styles/App.css'
+import reactIcon from '@/assets/images/react.svg'
 
 //Import Context Provider (Shared Data Cross Components)
-
 import {AppThemeContext} from "./contexts/AppThemeContext.js";
 
 
@@ -186,6 +186,9 @@ export default function App()
             <MenuIcon />
           </IconButton>
 
+          <Box sx={{ marginRight:3 }}>
+            <img src={reactIcon} alt="React Logo"/>
+          </Box>
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             React App
           </Typography>
@@ -410,7 +413,7 @@ export default function App()
                 </ListItemIcon>
 
                 <ListItemText 
-                  primary={"Products"}
+                  primary="Products"
                   sx={[
                     open
                       ? {

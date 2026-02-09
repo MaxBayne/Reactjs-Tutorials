@@ -1,9 +1,8 @@
 import '@/styles/ProductsListComponent.css'
 import ProductCardComponent from './ProductCardComponent.jsx'
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ProductsContext } from '../contexts/ProductsContext.js';
-
+import Stack from '@mui/material/Stack';
 
 export default function ProductsListComponent()
 {
@@ -15,18 +14,16 @@ export default function ProductsListComponent()
     let productsList=productsData.map((product) => 
         {
             return(
-                <Link key={product.id} to={`/products/${product.id}`} >
-                    <ProductCardComponent productId={product.id} productName={product.name} productPrice={product.price} productDescription={product.description}/>
-                </Link>
+                    <ProductCardComponent key={product.id} productId={product.id} productName={product.name} productPrice={product.price} productDescription={product.description}/>
             )
         });
 
     return (
         <div>
             <h4>Products List</h4>
-            <ul className='Products_List'>
+            <Stack direction={{ xs: 'column', sm: 'row' , md:'row' }} spacing={{ xs: 1, sm: 2, md: 4}}>
                 { productsList }
-            </ul>
+            </Stack>
         </div>
     );
 }

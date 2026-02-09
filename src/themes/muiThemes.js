@@ -2,6 +2,55 @@ import { createTheme } from '@mui/material/styles';
 import { blue, purple, red, green, grey } from '@mui/material/colors';
 
 
+const typographyFonts = {
+  fontFamily: 'Cairo, Arial, sans-serif',
+
+  h1: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 800,
+  },
+  h2: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 700,
+  },
+  h3: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 700,
+  },
+  h4: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 600,
+  },
+  h5: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 600,
+  },
+  h6: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 500,
+  },
+
+  subtitle1: {
+    fontWeight: 500,
+  },
+  subtitle2: {
+    fontWeight: 500,
+  },
+
+  body1: {
+    fontWeight: 400,
+  },
+  body2: {
+    fontWeight: 400,
+  },
+
+  button: {
+    fontFamily: 'Alexandria, Cairo, sans-serif',
+    fontWeight: 600,
+    textTransform: 'none',
+  },
+};
+
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
@@ -36,6 +85,10 @@ export const lightTheme = createTheme({
 
     divider: grey[300],
   },
+  typography:typographyFonts,
+  
+
+
 });
 
 export const darkTheme = createTheme({
@@ -72,4 +125,6 @@ export const darkTheme = createTheme({
 
     divider: '#2a2f36',
   },
+  typography:typographyFonts,
+  
 });
