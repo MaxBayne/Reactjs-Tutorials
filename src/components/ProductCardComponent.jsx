@@ -3,6 +3,12 @@ import '@/styles/ProductCardComponent.css'
 //Import React Library
 import { Link } from 'react-router-dom';
 
+//Import Material UI Icons
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 //Import Material UI Components
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -11,11 +17,8 @@ import CardContent from '@mui/material/CardContent';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 
-//Import Material UI Icons
 
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+
 
 
 export default function ProductCardComponent({productId,productName,productPrice,productDescription}) 
