@@ -57,7 +57,6 @@ import CssComponent from './components/CssComponent.jsx';
 import JavaScriptComponent from './components/JavaScriptComponent.jsx';
 import ProductsListComponent from './components/ProductsListComponent.jsx'
 import ProductDetailComponent from './components/ProductDetailComponent.jsx'
-import NewProductComponent from './components/NewProductComponent.jsx'
 import RemoveProductComponent from './components/RemoveProductComponent.jsx'
 import UseStateHookComponent from './components/UseStateHookComponent.jsx';
 import UseStateHookWithFormsComponent from './components/UseStateHookWithFormsComponent.jsx'
@@ -731,9 +730,6 @@ export default function App()
                <Route path='/products'>
                  <Route index element={<ProductsListComponent/>}/> 
                  <Route path=':id' element={<ProductDetailComponent/>}/>
-                 <Route path='new' element={<NewProductComponent/>}/>  
-                 <Route path='remove' element={<RemoveProductComponent/>}/>  
-                
                </Route>
 
                <Route path='/useContext' element={<UseContextHookComponent/>}/>

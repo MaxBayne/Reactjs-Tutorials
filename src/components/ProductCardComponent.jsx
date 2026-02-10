@@ -21,37 +21,48 @@ import Typography from '@mui/material/Typography';
 
 
 
-export default function ProductCardComponent({productId,productName,productPrice,productDescription}) 
+export default function ProductCardComponent(props) 
 {
+    const {product,openEditModalCallback,openRemoveModalCallback} = props;
+
+
    return (
                             <Box sx={{ minWidth: 300 }}>
                                 <Card  variant="elevation">
 
                                     <CardContent>
                                         <Typography variant="h5" component="div">
-                                            {productName}
+                                            {product.name}
                                         </Typography>
 
                                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                            {productPrice}
+                                            {product.price}
                                         </Typography>
 
                                         <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                                            {productDescription}
+                                            {product.description}
                                         </Typography>
 
                                     </CardContent>
 
                                     <CardActions>
-                                        <IconButton color='info' component={Link} to={`/products/${productId}`}>
+                                        <IconButton color='info' component={Link} to={`/products/${product.id}`}>
                                           <VisibilityIcon />
                                         </IconButton>
 
-                                        <IconButton color='warning' component={Link} to={`/products/edit/${productId}`}>
+                                        <IconButton color='warning' onClick={(e)=>
+                                            {
+                                                e.currentTarget.blur(); // remove focus
+                                                openEditModalCallback(product);
+                                            }}>
                                           <EditIcon />
                                         </IconButton>
 
-                                        <IconButton color="error" component={Link} to={`/products/remove/${productId}`}>
+                                        <IconButton color="error" onClick={(e)=>
+                                            {
+                                                e.currentTarget.blur(); // remove focus
+                                                openRemoveModalCallback(product);
+                                            }}>
                                           <DeleteIcon />
                                         </IconButton>
                                         

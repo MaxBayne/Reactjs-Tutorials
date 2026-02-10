@@ -2,7 +2,7 @@
 import '@/styles/ProductsListComponent.css'
 
 //Import React Library
-import { useContext } from 'react';
+import * as React from 'react';
 
 //Import Contexts (Shared Data)
 import { ProductsContext } from '../contexts/ProductsContext.js';
@@ -16,37 +16,129 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Fab from '@mui/material/Fab';
 
+
 //Import Custom Components
 import ProductCardComponent from './ProductCardComponent.jsx'
-
-
+import NewProductModalComponent from './NewProductModalComponent.jsx';
+import EditProductModalComponent from './EditProductModalComponent.jsx';
+import RemoveProductModalComponent from './RemoveProductModalComponent.jsx';
 
 export default function ProductsListComponent()
 {
     //get products data from global context called (ProductsContext)
-    const productsData = useContext(ProductsContext);
+    const { products, addProduct,editProduct,removeProduct } = React.useContext(ProductsContext);
+
+    //create state for form modals
+    const [openNewProductModalState, setOpenNewProductModalState] = React.useState(false);
+    const [openEditProductModalState, setOpenEditProductModalState] = React.useState(false);
+    const [openRemoveProductModalState, setOpenRemoveProductModalState] = React.useState(false);
+
+    //create state for form data
+    const [selectedProductState, setSelectedProductState] = React.useState(null);
+
+    //Create Product Modal --------------------------
+
+    function openModalNewProduct(e)
+    {
+        e.currentTarget.blur(); // remove focus
+        setOpenNewProductModalState(true);
+    }
+    function closeModalNewProduct()
+    {
+        setOpenNewProductModalState(false);
+    }
+    function handleNewProduct(newProduct)
+    {
+
+        //add new product to current Context state
+        addProduct(newProduct); // 🔥 updates context state
+
+        closeModalNewProduct();
+    }
+
+    //Edit Product Modal --------------------------
+
+    function openModalEditProduct(product)
+    {
+        setSelectedProductState(product);
+        setOpenEditProductModalState(true);
+    }
+    function closeModalEditProduct()
+    {
+        setOpenEditProductModalState(false);
+
+        setSelectedProductState(null);
+    }
+    function handleEditProduct(editedProduct)
+    {
+        //update edited product inside current Context state
+        editProduct(editedProduct); // 🔥 updates context state
+
+        closeModalEditProduct();
+    }
+
+    //Remove Product Modal --------------------------
+
+    function openModalRemoveProduct(product)
+    {
+        setSelectedProductState(product);
+        setOpenRemoveProductModalState(true);
+    }
+    function closeModalRemoveProduct()
+    {
+        setOpenRemoveProductModalState(false);
+
+        setSelectedProductState(null);
+    }
+    function handleRemoveProduct(removedProduct)
+    {
+        //update edited product inside current Context state
+        removeProduct(removedProduct); // 🔥 remove item and updates context state
+
+        closeModalRemoveProduct();
+    }
 
 
-    //convert products to li items
-    let productsList=productsData.map((product) => 
+
+    //convert products to Card items [ProductCardComponent]
+    let productsJsx=products.map((product) => 
         {
             return(
-                    <ProductCardComponent key={product.id} productId={product.id} productName={product.name} productPrice={product.price} productDescription={product.description}/>
+                    <ProductCardComponent key={product.id} product={product} openEditModalCallback={openModalEditProduct} openRemoveModalCallback={openModalRemoveProduct} />
             )
         });
 
     return (
+        <>
+        
         <Box sx={{ flexGrow: 1,height:'87vh' ,position:'relative'}}>
             <Typography variant="h5" component="div">Products List</Typography>
             <br/>
             <Stack direction={{ xs: 'column', sm: 'row' , md:'row' }} spacing={{ xs: 1, sm: 2, md: 4}}>
-                { productsList }
+                { productsJsx }
             </Stack>
 
-            <Fab color="success" size="medium" aria-label="add" sx={{ position: 'absolute', bottom: 16, right: 16,  }}>
+            <Fab onClick={openModalNewProduct} color="success" size="medium"  sx={{ position: 'absolute', bottom: 16, right: 16,  }}>
                 <AddIcon />
             </Fab>
 
         </Box>
+
+        <NewProductModalComponent openModalState={openNewProductModalState} 
+                                  closeModalCallBack={closeModalNewProduct} 
+                                  onValidNewProductCallBack={handleNewProduct}/>
+
+        <EditProductModalComponent openModalState={openEditProductModalState}
+                                   closeModalCallBack={closeModalEditProduct} 
+                                   productForEdit={selectedProductState}
+                                   onValidEditProductCallBack={handleEditProduct} />
+
+        <RemoveProductModalComponent openModalState={openRemoveProductModalState}
+                                   closeModalCallBack={closeModalRemoveProduct} 
+                                   productForRemove={selectedProductState}
+                                   onValidRemoveProductCallBack={handleRemoveProduct} />
+                                   
+
+        </>
     );
 }

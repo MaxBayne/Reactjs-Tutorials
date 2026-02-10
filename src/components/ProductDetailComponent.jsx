@@ -1,16 +1,23 @@
+//Import Styles
 import '@/styles/ProductDetailComponent.css'
+
+//Import React Library
+import * as React from 'react';
 import { useParams } from 'react-router-dom'
-import { useContext } from 'react'
-import { ProductsContext } from '../contexts/ProductsContext.js'
+
+//Import Contexts (Shared Data)
+import { ProductsContext } from '../contexts/ProductsContext.js';
+
 
 export default function ProductDetail()
 {
     const {id} = useParams();
 
-    const productsData = useContext(ProductsContext);
+    //get products data from global context called (ProductsContext)
+    const { products } = React.useContext(ProductsContext);
 
     
-    const product = productsData.find((product) => product.id == id);
+    const product = products.find((product) => product.id == id);
 
 
     if(product!=null)
