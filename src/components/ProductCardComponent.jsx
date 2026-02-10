@@ -46,7 +46,7 @@ export default function ProductCardComponent(props)
                                     </CardContent>
 
                                     <CardActions>
-                                        <IconButton color='info' component={Link} to={`/products/${product.id}`}>
+                                        <IconButton color='silver' component={Link} to={`/products/${product.id}`}>
                                           <VisibilityIcon />
                                         </IconButton>
 
