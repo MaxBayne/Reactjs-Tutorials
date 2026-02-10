@@ -727,10 +727,15 @@ export default function App()
                <Route path='/css' element={<CssComponent/>}/>
                <Route path='/javascript' element={<JavaScriptComponent/>}/>
 
-               <Route path='/products'>
-                 <Route index element={<ProductsProvider> <ProductsListComponent/> </ProductsProvider> }/> 
-                 <Route path=':id' element={<ProductDetailComponent/>}/>
-               </Route>
+
+               
+               
+                  <Route path='/products'>
+                    <Route index element={<ProductsProvider> <ProductsListComponent/> </ProductsProvider>}/> 
+                    <Route path=':id' element={<ProductsProvider> <ProductDetailComponent/> </ProductsProvider>}/>
+                  </Route>
+               
+               
 
                <Route path='/useContext' element={<UseContextHookComponent/>}/>
 
