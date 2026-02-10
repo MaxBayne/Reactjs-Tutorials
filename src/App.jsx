@@ -10,7 +10,7 @@ import reactIcon from '@/assets/images/react.svg'
 
 //Import Context Provider (Shared Data Cross Components)
 import {AppThemeContext} from "./contexts/AppThemeContext.js";
-
+import ProductsProvider from './contexts/ProductsProvider.jsx'
 
 //Import Material UI Themes
 import { styled, useTheme } from '@mui/material/styles';
@@ -728,7 +728,7 @@ export default function App()
                <Route path='/javascript' element={<JavaScriptComponent/>}/>
 
                <Route path='/products'>
-                 <Route index element={<ProductsListComponent/>}/> 
+                 <Route index element={<ProductsProvider> <ProductsListComponent/> </ProductsProvider> }/> 
                  <Route path=':id' element={<ProductDetailComponent/>}/>
                </Route>
 

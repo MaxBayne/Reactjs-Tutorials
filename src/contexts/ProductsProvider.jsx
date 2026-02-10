@@ -3,6 +3,8 @@ import * as React from 'react';
 import { ProductsContext } from "./ProductsContext";
 import { v4 as uuidv4 } from 'uuid';
 
+const productsKeyInsideLocalStorage="productsList";
+
 const initialProducts = [
   {
     id: uuidv4(),
@@ -27,7 +29,19 @@ const initialProducts = [
 //2- Create Context Provider like Component to wrap consumed Components
 export default function ProductsProvider({ children }) 
 {
-  const [products, setProducts] = React.useState(initialProducts);
+  // ✅ Lazy initialization from localStorage
+  const [products, setProducts] = React.useState(() => 
+  {
+    const stored = localStorage.getItem(productsKeyInsideLocalStorage);
+    return stored ? JSON.parse(stored) : initialProducts;
+  });
+
+
+  // ✅ Persist to localStorage whenever products change
+  React.useEffect(() => 
+  {
+    localStorage.setItem(productsKeyInsideLocalStorage,JSON.stringify(products));
+  }, [products]);
 
   function addProduct(newProduct) 
   {
