@@ -8,9 +8,9 @@ import ReactDOM from 'react-dom/client';
 import {BrowserRouter} from 'react-router-dom'
 
 //import context providers
-import AppThemeProvider from './contexts/AppThemeProvider.jsx'
-import UserProvider from './contexts/UserProvider.jsx'
-import ToastProvider from './contexts/ToastProvider.jsx'
+import AppThemeProvider from './providers/AppThemeProvider.jsx'
+import UserProvider from './providers/UserProvider.jsx'
+import ToastProvider from './providers/ToastProvider.jsx'
 
 
 

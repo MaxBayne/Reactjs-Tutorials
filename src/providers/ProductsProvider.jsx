@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ProductsContext } from "./ProductsContext";
+import { ProductsContext } from "@/contexts/ProductsContext.js";
 import { v4 as uuidv4 } from 'uuid';
 
 const productsKeyInsideLocalStorage="productsList";

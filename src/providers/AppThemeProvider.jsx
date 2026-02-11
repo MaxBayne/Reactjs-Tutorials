@@ -1,5 +1,5 @@
 import React, { useMemo ,useState,useEffect } from 'react';
-import { AppThemeContext } from "./AppThemeContext";
+import { AppThemeContext } from "@/contexts/AppThemeContext.js";
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { lightTheme, darkTheme } from '@/themes/muiThemes';
 

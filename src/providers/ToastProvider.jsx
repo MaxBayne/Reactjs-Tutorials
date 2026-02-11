@@ -2,7 +2,7 @@
 import * as React from 'react';
 
 //import Context
-import { ToastContext } from "./ToastContext.js";
+import { ToastContext } from "@/contexts/ToastContext.js";
 
 //import Material UI Components
 import ToastComponent from '@/components/ToastComponent.jsx'

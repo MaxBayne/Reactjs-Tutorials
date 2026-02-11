@@ -8,9 +8,11 @@ import { Routes,Route,Link } from 'react-router-dom'
 import './styles/App.css'
 import reactIcon from '@/assets/images/react.svg'
 
+//Import Context (Shared Data Cross Components Contracts)
+import {AppThemeContext} from "@/contexts/AppThemeContext.js";
+
 //Import Context Provider (Shared Data Cross Components)
-import {AppThemeContext} from "./contexts/AppThemeContext.js";
-import ProductsProvider from './contexts/ProductsProvider.jsx'
+import ProductsProvider from '@/providers/ProductsProvider.jsx'
 
 //Import Material UI Themes
 import { styled, useTheme } from '@mui/material/styles';

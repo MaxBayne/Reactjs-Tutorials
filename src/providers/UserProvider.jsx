@@ -1,4 +1,4 @@
-import { UserContext } from "./UserContext";
+import { UserContext } from "@/contexts/UserContext.js";
 
 export default function UserProvider({ children }) 
 {
