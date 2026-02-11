@@ -10,6 +10,8 @@ import {BrowserRouter} from 'react-router-dom'
 //import context providers
 import AppThemeProvider from './contexts/AppThemeProvider.jsx'
 import UserProvider from './contexts/UserProvider.jsx'
+import ToastProvider from './contexts/ToastProvider.jsx'
+
 
 
 //import custom components
@@ -21,7 +23,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
      <AppThemeProvider> 
       <UserProvider>
+        <ToastProvider>
           <App />
+        </ToastProvider>
       </UserProvider>
      </AppThemeProvider>
      </BrowserRouter>

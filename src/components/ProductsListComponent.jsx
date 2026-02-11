@@ -6,6 +6,7 @@ import * as React from 'react';
 
 //Import Contexts (Shared Data)
 import { ProductsContext } from '../contexts/ProductsContext.js';
+import { ToastContext } from '../contexts/ToastContext.js';
 
 //Import Material UI Icons
 import AddIcon from '@mui/icons-material/Add';
@@ -28,15 +29,16 @@ export default function ProductsListComponent()
     //get products data from global context called (ProductsContext)
     const { products, addProduct,editProduct,removeProduct } = React.useContext(ProductsContext);
 
-    //create state for form modals
-    const [openNewProductModalState, setOpenNewProductModalState] = React.useState(false);
-    const [openEditProductModalState, setOpenEditProductModalState] = React.useState(false);
-    const [openRemoveProductModalState, setOpenRemoveProductModalState] = React.useState(false);
+    //get toast Context from global context called (ToastContext)
+    const {showToast} = React.useContext(ToastContext);
 
-    //create state for form data
+    //create state for selected product
     const [selectedProductState, setSelectedProductState] = React.useState(null);
 
+
     //Create Product Modal --------------------------
+
+    const [openNewProductModalState, setOpenNewProductModalState] = React.useState(false);
 
     function openModalNewProduct(e)
     {
@@ -54,9 +56,13 @@ export default function ProductsListComponent()
         addProduct(newProduct); // 🔥 updates context state
 
         closeModalNewProduct();
+
+        showToast(`${newProduct.name} Product Added Succesfully`,"success",3000,"top","center");
     }
 
     //Edit Product Modal --------------------------
+
+    const [openEditProductModalState, setOpenEditProductModalState] = React.useState(false);
 
     function openModalEditProduct(product)
     {
@@ -75,9 +81,13 @@ export default function ProductsListComponent()
         editProduct(editedProduct); // 🔥 updates context state
 
         closeModalEditProduct();
+
+        showToast(`${editedProduct.name} Product has been Modified`,"success",3000,"top","center");
     }
 
     //Remove Product Modal --------------------------
+
+    const [openRemoveProductModalState, setOpenRemoveProductModalState] = React.useState(false);
 
     function openModalRemoveProduct(product)
     {
@@ -96,6 +106,8 @@ export default function ProductsListComponent()
         removeProduct(removedProduct); // 🔥 remove item and updates context state
 
         closeModalRemoveProduct();
+
+        showToast(`${removedProduct.name} Product has been Removed`,"success",3000,"top","center");
     }
 
 
@@ -137,7 +149,8 @@ export default function ProductsListComponent()
                                    closeModalCallBack={closeModalRemoveProduct} 
                                    productForRemove={selectedProductState}
                                    onValidRemoveProductCallBack={handleRemoveProduct} />
-                                   
+
+        
 
         </>
     );
