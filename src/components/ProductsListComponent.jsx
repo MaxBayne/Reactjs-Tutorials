@@ -4,9 +4,10 @@ import '@/styles/ProductsListComponent.css'
 //Import React Library
 import * as React from 'react';
 
-//Import Contexts (Shared Data)
-import { ProductsContext } from '../contexts/ProductsContext.js';
-import { ToastContext } from '../contexts/ToastContext.js';
+//Import Custom Hooks
+import {useProductsHook} from '@/hooks/useProductsHook.js';
+import {useToastHook} from '@/hooks/useToastHook.js';
+
 
 //Import Material UI Icons
 import AddIcon from '@mui/icons-material/Add';
@@ -26,11 +27,11 @@ import RemoveProductModalComponent from './RemoveProductModalComponent.jsx';
 
 export default function ProductsListComponent()
 {
-    //get products data from global context called (ProductsContext)
-    const { products, addProduct,editProduct,removeProduct } = React.useContext(ProductsContext);
+    //get products data from global context using custom hook 
+    const { products, addProduct,editProduct,removeProduct } = useProductsHook();
 
-    //get toast Context from global context called (ToastContext)
-    const {showToast} = React.useContext(ToastContext);
+    //get toast Context from global context using custom hook
+    const {showToast} = useToastHook();
 
     //create state for selected product
     const [selectedProductState, setSelectedProductState] = React.useState(null);
