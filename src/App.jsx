@@ -68,6 +68,8 @@ import UserMemoHookComponent from "./components/UseMemoHookComponent.jsx";
 import UserReducerHookComponent from "./components/UseReducerHookComponent.jsx";
 import WeatherComponent from "./components/WeatherComponent.jsx";
 import LocalizationComponent from "./components/LocalizationComponent.jsx";
+import CounterComponent from "./components/CounterComponent.jsx";
+
 
 const drawerWidth = 240;
 
@@ -161,6 +163,7 @@ export default function App() {
   const [useReducerMenuOpen, setUseReducerMenuOpen] = React.useState(false);
   const [apiMenuOpen, setApiMenuOpen] = React.useState(false);
   const [localizationMenuOpen, setLocalizationMenuOpen] = React.useState(false);
+  const [reduxMenuOpen, setReduxMenuOpen] = React.useState(false);  
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -1112,6 +1115,90 @@ export default function App() {
               </Collapse>
 
 
+              {/* redux */}
+              <ListItemButton
+                onClick={() => {
+                  setReduxMenuOpen(!reduxMenuOpen);
+                }}
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: "initial",
+                      }
+                    : {
+                        justifyContent: "center",
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                    },
+                    openDrawer
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <WebhookIcon />
+                </ListItemIcon>
+
+                <ListItemText
+                  primary="Redux"
+                  sx={[
+                    openDrawer
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                ></ListItemText>
+
+                <Box
+                  sx={[
+                    openDrawer
+                      ? {
+                          opacity: 1,
+                          ml: 18,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                >
+                  {reduxMenuOpen ? <ExpandLess /> : <ExpandMore />}
+                </Box>
+              </ListItemButton>
+              {/* redux Sub Menus */}
+              <Collapse in={reduxMenuOpen} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton
+                    component={Link}
+                    to="/redux/counter"
+                    sx={{ pl: 4 }}
+                  >
+                    <ListItemIcon>
+                      <LabelImportantIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="counter" />
+                  </ListItemButton>
+
+                 
+                </List>
+              </Collapse>
+
+
 
 
             </ListItem>
@@ -1188,6 +1275,10 @@ export default function App() {
 
             <Route path="/localization">
               <Route path="i18n" element={<LocalizationComponent />} />
+            </Route>
+
+            <Route path="/redux">
+              <Route path="counter" element={<CounterComponent />} />
             </Route>
 
           </Routes>
