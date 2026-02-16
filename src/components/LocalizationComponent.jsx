@@ -32,7 +32,9 @@ export default function LocalizationComponent()
 
 
     return (
-        <>
+
+        <div dir={i18n.language=="ar"?"rtl":"ltr"}>
+
             <h3>Localization Component</h3>
 
             <h5>{t("welcomeTitle")}</h5>
@@ -51,6 +53,6 @@ export default function LocalizationComponent()
                 {i18n.language=="ar"?"EN":"AR"}
             </Button>
 
-        </>
+        </div>
     );
 }
