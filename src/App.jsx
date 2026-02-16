@@ -67,6 +67,7 @@ import UserEffectHookComponent from "./components/UseEffectHookComponent.jsx";
 import UserMemoHookComponent from "./components/UseMemoHookComponent.jsx";
 import UserReducerHookComponent from "./components/UseReducerHookComponent.jsx";
 import WeatherComponent from "./components/WeatherComponent.jsx";
+import LocalizationComponent from "./components/LocalizationComponent.jsx";
 
 const drawerWidth = 240;
 
@@ -159,6 +160,7 @@ export default function App() {
   const [useMemoMenuOpen, setUseMemoMenuOpen] = React.useState(false);
   const [useReducerMenuOpen, setUseReducerMenuOpen] = React.useState(false);
   const [apiMenuOpen, setApiMenuOpen] = React.useState(false);
+  const [localizationMenuOpen, setLocalizationMenuOpen] = React.useState(false);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -1026,6 +1028,89 @@ export default function App() {
                 </List>
               </Collapse>
 
+              {/* localization */}
+              <ListItemButton
+                onClick={() => {
+                  setLocalizationMenuOpen(!localizationMenuOpen);
+                }}
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: "initial",
+                      }
+                    : {
+                        justifyContent: "center",
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
+                    {
+                      minWidth: 0,
+                      justifyContent: "center",
+                    },
+                    openDrawer
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  <WebhookIcon />
+                </ListItemIcon>
+
+                <ListItemText
+                  primary="Localization"
+                  sx={[
+                    openDrawer
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                ></ListItemText>
+
+                <Box
+                  sx={[
+                    openDrawer
+                      ? {
+                          opacity: 1,
+                          ml: 18,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                >
+                  {localizationMenuOpen ? <ExpandLess /> : <ExpandMore />}
+                </Box>
+              </ListItemButton>
+              {/* localization Sub Menus */}
+              <Collapse in={localizationMenuOpen} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton
+                    component={Link}
+                    to="/localization/i18n"
+                    sx={{ pl: 4 }}
+                  >
+                    <ListItemIcon>
+                      <LabelImportantIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="i18n" />
+                  </ListItemButton>
+
+                 
+                </List>
+              </Collapse>
+
 
 
 
@@ -1097,8 +1182,12 @@ export default function App() {
               <Route path="buttons" element={<MaterialButtonsComponent />} />
             </Route>
 
-             <Route path="/api">
+            <Route path="/api">
               <Route path="weather" element={<WeatherComponent />} />
+            </Route>
+
+            <Route path="/localization">
+              <Route path="i18n" element={<LocalizationComponent />} />
             </Route>
 
           </Routes>
