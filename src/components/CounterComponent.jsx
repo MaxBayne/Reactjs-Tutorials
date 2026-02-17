@@ -25,7 +25,7 @@ export default function CounterComponent()
 
         <Button onClick={() => storeDispatch(incrementAction())}>Increment</Button>
         <Button onClick={() => storeDispatch(decrementAction())}>Decrement</Button>
-        <Button onClick={() => storeDispatch(incrementByAmountAction(10))}>Increment by 10</Button>
+        <Button onClick={() => storeDispatch(incrementByAmountAction({numberAmount:10}))}>Increment by 10</Button>
         
         </>
     );

@@ -1,9 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  value: 0,
+};
+
+
 export const CounterSlice = createSlice(
 {
   name: "counterSlice",
-  initialState:{value:0},
+  initialState:initialState,
   reducers: 
   {
     incrementAction: (state,action) => 
@@ -23,7 +28,9 @@ export const CounterSlice = createSlice(
     {
         console.log(state,action);
 
-      state.value += action.payload
+        const {numberAmount} = action.payload;
+
+        state.value += numberAmount;
     },
   },
 });
