@@ -1,6 +1,6 @@
 //import redux
 import { useSelector, useDispatch } from "react-redux";
-import { incrementAction,decrementAction,incrementByAmountAction } from "@/redux/slices/counterSlice";
+import { incrementAction,decrementAction,incrementByAmountAction } from "@/redux/slices/CounterSlice";
 
 //import Material UI Components
 import Button from "@mui/material/Button";
@@ -9,7 +9,7 @@ export default function CounterComponent()
 {
 
     //read value from redux using [useSelector]
-    const counterState = useSelector((store) => store.counterReducer.value);
+    const counterState = useSelector((store) => store.CounterReducer.value);
 
     //write value to redux using [useDispatch]
     const storeDispatch = useDispatch();

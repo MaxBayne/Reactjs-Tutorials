@@ -69,6 +69,7 @@ import UserReducerHookComponent from "./components/UseReducerHookComponent.jsx";
 import WeatherComponent from "./components/WeatherComponent.jsx";
 import LocalizationComponent from "./components/LocalizationComponent.jsx";
 import CounterComponent from "./components/CounterComponent.jsx";
+import WeatherWithReduxComponent from "./components/WeatherWithReduxComponent.jsx";
 
 
 const drawerWidth = 240;
@@ -1153,7 +1154,7 @@ export default function App() {
                 </ListItemIcon>
 
                 <ListItemText
-                  primary="Redux"
+                  primary="Redux (State Mang)"
                   sx={[
                     openDrawer
                       ? {
@@ -1183,6 +1184,7 @@ export default function App() {
               {/* redux Sub Menus */}
               <Collapse in={reduxMenuOpen} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
+                  
                   <ListItemButton
                     component={Link}
                     to="/redux/counter"
@@ -1193,6 +1195,18 @@ export default function App() {
                     </ListItemIcon>
                     <ListItemText primary="counter" />
                   </ListItemButton>
+
+                  <ListItemButton
+                    component={Link}
+                    to="/redux/weather"
+                    sx={{ pl: 4 }}
+                  >
+                    <ListItemIcon>
+                      <LabelImportantIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="weather" />
+                  </ListItemButton>
+
 
                  
                 </List>
@@ -1279,6 +1293,7 @@ export default function App() {
 
             <Route path="/redux">
               <Route path="counter" element={<CounterComponent />} />
+              <Route path="weather" element={<WeatherWithReduxComponent />} />
             </Route>
 
           </Routes>
